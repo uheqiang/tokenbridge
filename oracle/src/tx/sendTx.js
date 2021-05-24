@@ -22,6 +22,11 @@ async function sendTx({ privateKey, data, nonce, gasPrice, amount, gasLimit, to,
   )
 }
 
+async function sendTxToKhc({privateKey,data,amount,to,khcWeb}) {
+
+}
+
 module.exports = {
-  sendTx
+  sendTx,
+  sendTxToKhc
 }

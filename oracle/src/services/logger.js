@@ -1,12 +1,12 @@
 const pino = require('pino')
 const path = require('path')
 const {
-  web3Home,
+  // web3Home,
   web3Foreign,
   web3Side,
-  web3HomeFallback,
+  // web3HomeFallback,
   web3ForeignFallback,
-  web3HomeRedundant,
+  // web3HomeRedundant,
   web3ForeignRedundant
 } = require('./web3')
 
@@ -24,11 +24,11 @@ const logger = pino({
       : {}
 })
 
-web3Home.currentProvider.setLogger(logger)
+// web3Home.currentProvider.setLogger(logger)
 web3Foreign.currentProvider.setLogger(logger)
-web3HomeFallback.currentProvider.setLogger(logger)
+// web3HomeFallback.currentProvider.setLogger(logger)
 web3ForeignFallback.currentProvider.setLogger(logger)
-web3HomeRedundant.currentProvider.setLogger(logger)
+// web3HomeRedundant.currentProvider.setLogger(logger)
 web3ForeignRedundant.currentProvider.setLogger(logger)
 
 if (web3Side) {
