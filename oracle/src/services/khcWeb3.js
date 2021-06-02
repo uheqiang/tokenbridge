@@ -7,8 +7,8 @@ const {
   COMMON_HOME_RPC_URL,
   COMMON_FOREIGN_RPC_URL,
   // ORACLE_SIDE_RPC_URL,
-  ORACLE_RPC_REQUEST_TIMEOUT,
-  ORACLE_HOME_RPC_POLLING_INTERVAL,
+  // ORACLE_RPC_REQUEST_TIMEOUT,
+  // ORACLE_HOME_RPC_POLLING_INTERVAL,
   // ORACLE_FOREIGN_RPC_POLLING_INTERVAL,
   ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY
 } = process.env
@@ -23,22 +23,22 @@ if (!COMMON_FOREIGN_RPC_URL) {
 // const homeUrls = COMMON_HOME_RPC_URL.split(' ').filter(url => url.length > 0)
 // const foreignUrls = COMMON_FOREIGN_RPC_URL.split(' ').filter(url => url.length > 0)
 
-const homeDefaultTimeout = parseInt(ORACLE_HOME_RPC_POLLING_INTERVAL, 10) * 2
-// const foreignDefaultTimeout = parseInt(ORACLE_FOREIGN_RPC_POLLING_INTERVAL, 10) * 2
-const configuredTimeout = parseInt(ORACLE_RPC_REQUEST_TIMEOUT, 10)
+// const homeDefaultTimeout = parseInt(ORACLE_HOME_RPC_POLLING_INTERVAL, 10) * 2
+// // const foreignDefaultTimeout = parseInt(ORACLE_FOREIGN_RPC_POLLING_INTERVAL, 10) * 2
+// const configuredTimeout = parseInt(ORACLE_RPC_REQUEST_TIMEOUT, 10)
 
-const homeOptions = {
-  requestTimeout: configuredTimeout || homeDefaultTimeout,
-  retry: RETRY_CONFIG
-}
+// const homeOptions = {
+//   requestTimeout: configuredTimeout || homeDefaultTimeout,
+//   retry: RETRY_CONFIG
+// }
 
 // const foreignOptions = {
 //   requestTimeout: configuredTimeout || foreignDefaultTimeout,
 //   retry: RETRY_CONFIG
 // }
 
-const khcWebHome = new KhcExtension({
-  fullHost: COMMON_HOME_RPC_URL,
+const khcWebForeign = new KhcExtension({
+  fullHost: COMMON_FOREIGN_RPC_URL,
   privateKey: ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY
 })
 // const homeProvider = new HttpListProvider(homeUrls, homeOptions)
@@ -84,7 +84,7 @@ const khcWebHome = new KhcExtension({
 // }
 
 module.exports = {
-  khcWebHome,
-  khcWebHomeRedundant: khcWebHome,
-  khcWebHomeFallback: khcWebHome
+  khcWebForeign,
+  khcWebForeignRedundant: khcWebForeign,
+  khcWebForeignFallback: khcWebForeign
 }

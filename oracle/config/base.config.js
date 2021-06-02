@@ -12,7 +12,8 @@ const {
   HOME_AMB_ABI,
   FOREIGN_AMB_ABI
 } = require('../../commons')
-const { web3Home, web3Foreign } = require('../src/services/web3')
+const { web3Home } = require('../src/services/web3')
+const { khcWebForeign } = require('../src/services/khcWeb3')
 const { privateKeyToAddress } = require('../src/utils/utils')
 
 const { ORACLE_VALIDATOR_ADDRESS, ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY } = process.env
@@ -92,7 +93,7 @@ const foreignConfig = {
   bridgeAbi: foreignAbi,
   pollingInterval: process.env.ORACLE_FOREIGN_RPC_POLLING_INTERVAL,
   startBlock: toBN(process.env.ORACLE_FOREIGN_START_BLOCK || 0),
-  web3: web3Foreign
+  web3: khcWebForeign
 }
 
 module.exports = {
